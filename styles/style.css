@@ -60,8 +60,8 @@ main{
 }
 
 .container{
-    margin: 25px;
-    margin-left: 35%;
+    margin: auto;
+    margin-top: 20px;
     background-color: rgb(223, 223, 223);
     border-radius: 20px;
     width: 450px;
@@ -71,4 +71,10 @@ main{
 
 #name{
     margin-left: 50px;
+}
+
+@media (max-width:425px){
+    #text{
+        width: 100px;
+    }
 }
