@@ -13,7 +13,7 @@ button{
     height: 40px;
 }
 
-.addline{
+.addLine{
     text-decoration: line-through;
 }
 
@@ -26,38 +26,12 @@ button{
     width: 100px;
 }
 
-/* td{
-    padding: 10px;
-   width: 180px; 
-   font-size: 17px;
-   box-shadow: 0 3px 30px rgb(110, 110, 110);
-} */
-
 .items>div{
     display: inline-grid;
     padding: 8px;
     font-size: 17px;
     position: relative;
 }
-
-/* #check::before{
-    content: '';
-    width: 80px;
-    height: 2px;
-    position: absolute;
-    top: 18px;
-    left: 130px;
-    background-color: gray;
-    display: none;
-}
-
-#check:hover::before{
-    display: block;
-} */
-
-    /* .checkbox[type="checkbox"]:checked~#name{
-        text-decoration: line-through;
-    } */
 
 hr{
    box-shadow: 0 0 1px black; 
@@ -79,7 +53,6 @@ hr{
 body{
     background-color: green;
     min-height: 100vh;
-    /* overflow-x: hidden; */
 }
 
 main{

@@ -22,7 +22,7 @@ items.forEach((item,index)=>{
 console.table(items);    
 
 function showData(){
-    addItems.addEventListener('click',()=>{
+
         document.querySelector('#content').innerHTML = '';
         items.forEach((item,index)=>{
             document.querySelector('#content').innerHTML += `
@@ -34,8 +34,10 @@ function showData(){
             `
         })
     
-    })
+    
 }
+
+addItems.addEventListener('click',showData());
 
 function addData() {
     // e.preventDefault();
@@ -57,8 +59,10 @@ let icon = document.querySelector('#remove')
 function visible(id){
       if (document.querySelectorAll('#check')[id].checked) {
         document.querySelectorAll('#remove')[id].style.display = 'block';
+        document.querySelectorAll('#name')[id].classList.add('addLine');
       } else {
-        document.querySelectorAll('#remove')[id].style.display = 'none';
+        document.querySelectorAll('#remove')[id].style.display = 'block';
+        document.querySelectorAll('#name')[id].classList.remove('addLine');
       }
     }
 addItems.addEventListener('click', addData);
@@ -66,12 +70,10 @@ addItems.addEventListener('click', addData);
 function removeItem(id) {
     if(id > -1) {
         items.splice(id, 1); 
-        // Apply the change
         localStorage.setItem('records', JSON.stringify(items)); 
-        alert('Please refresh page to delete item')       
-    }else {
-        console.log('Name was not found')
+        // alert('Please refresh page to delete item')       
     }
+        showData();
 }
 
 document.querySelector('#sort').addEventListener('click', ()=> {
