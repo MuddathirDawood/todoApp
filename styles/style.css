@@ -15,20 +15,49 @@ button{
 
 #text{
     width: 400px;
+    height: 34px;
 }
 
 .checkbox{
     width: 100px;
 }
 
-td{
+/* td{
     padding: 10px;
-   width: 200px; 
-   font-size: 18px;
+   width: 180px; 
+   font-size: 17px;
+   box-shadow: 0 3px 30px rgb(110, 110, 110);
+} */
+
+#items>div{
+    display: inline-grid;
+    padding: 8px;
+    font-size: 17px;
+    position: relative;
+}
+
+#check::before{
+    content: '';
+    width: 80px;
+    height: 2px;
+    position: absolute;
+    top: 18px;
+    left: 130px;
+    background-color: gray;
+    display: none;
+}
+
+#check:hover::before{
+    display: block;
+}
+
+
+hr{
+   box-shadow: 0 0 1px black; 
 }
 
 i{
-    margin-left: 100px;
+    margin-left: 160px;
     display: none;
 }
 
