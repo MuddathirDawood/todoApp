@@ -5,48 +5,29 @@ JSON.parse(localStorage.getItem('records')) : [
         item: 'TV Stand',
         createdDate: new Date()
     }
-]
-items.forEach(item=>{
-    document.querySelector('#content').innerHTML += `
-    <div id="items">
-    <div><input type="checkbox" class="checkbox" id="check" onclick="visible()"></div>
-    <div>${item.item}</div>
-    <div><i class="bi bi-x" id="remove"></i></div>
-    </div>
-    `
-});
-const addItems = document.querySelector('#add');
+] 
 
+document.addEventListener("DOMContentLoaded", ()=> {showData();});
+    const addItems = document.querySelector('#add');
 
-
-
-const checkBox = document.querySelector('#check');
-let icon = document.querySelector('#remove')
-function visible(){
-    if (icon.style.display === "block") {
-        icon.style.display = 'none'
-    }else{
-        icon.style.display = 'block'
-    }
-
-    }
-
-
-function addData() {
-    // e.preventDefault();
+function showData(){
     addItems.addEventListener('click',()=>{
         document.querySelector('#content').innerHTML = '';
-        items.forEach(item=>{
+        items.forEach((item,index)=>{
             document.querySelector('#content').innerHTML += `
-            <div id="items">
-            <div><input type="checkbox" class="checkbox" id="check" onclick="visible()"></div>
-            <div class="name">${item.item}</div>
-            <div><i class="bi bi-x" id="remove"></i></div>
+            <div class="items">
+            <div><input type="checkbox" id="check" onclick="visible(${index})"></div>
+            <div id="name">${item.item}</div>
+            <div><i class="bi bi-x" id="remove" onclick="removeItem(${index})"></i></div>
             </div>
             `
         })
     
     })
+}
+
+function addData() {
+    // e.preventDefault();
     items.push(
         {
             id: items.length+1,
@@ -58,7 +39,36 @@ function addData() {
     (function loadData() {
         console.table(items);
     })()
+    showData();
 }
-document.querySelector('#add').addEventListener('click', addData);
+
+let icon = document.querySelector('#remove')
+function visible(id){
+      if (document.querySelectorAll('#check')[id].checked) {
+        document.querySelectorAll('#remove')[id].style.display = 'block';
+      } else {
+        document.querySelectorAll('#remove')[id].style.display = 'none';
+      }
+    }
+addItems.addEventListener('click', addData);
+
+function removeItem(id) {
+    if(id > -1) {
+        items.splice(id, 1); 
+        // Apply the change
+        localStorage.setItem('records', JSON.stringify(items));        
+    }else {
+        console.log('Name was not found')
+    }
+}
+
+document.querySelector('#sort').addEventListener('click', ()=> {
+    items.sort( (a, b)=> {
+        return (a.item < b.item) ? -1: 0; 
+    });
+    // Save new data to the localstorage
+    localStorage.setItem('records', JSON.stringify(items));   
+    showData(); 
+});
 
 // localStorage.removeItem('records');

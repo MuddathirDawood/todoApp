@@ -29,14 +29,14 @@ button{
    box-shadow: 0 3px 30px rgb(110, 110, 110);
 } */
 
-#items>div{
+.items>div{
     display: inline-grid;
     padding: 8px;
     font-size: 17px;
     position: relative;
 }
 
-#check::before{
+/* #check::before{
     content: '';
     width: 80px;
     height: 2px;
@@ -49,19 +49,22 @@ button{
 
 #check:hover::before{
     display: block;
-}
+} */
 
+    /* .checkbox[type="checkbox"]:checked~#name{
+        text-decoration: line-through;
+    } */
 
 hr{
    box-shadow: 0 0 1px black; 
 }
 
-i{
+#remove{
     margin-left: 160px;
     display: none;
 }
 
-i:hover{
+#remove:hover{
     border-radius: 200px;
     border: 1px solid gray;
     box-shadow: 0 0 10px black;
@@ -85,5 +88,10 @@ main{
     background-color: rgb(223, 223, 223);
     border-radius: 20px;
     width: 450px;
-    height: 250px;
+    height: 400px;
+    box-shadow: 15px 15px 15px black;
+}
+
+#name{
+    margin-left: 50px;
 }
