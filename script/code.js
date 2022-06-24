@@ -19,6 +19,7 @@ items.forEach((item,index)=>{
         </div>
         `
     })
+console.table(items);    
 
 function showData(){
     addItems.addEventListener('click',()=>{
@@ -66,7 +67,8 @@ function removeItem(id) {
     if(id > -1) {
         items.splice(id, 1); 
         // Apply the change
-        localStorage.setItem('records', JSON.stringify(items));        
+        localStorage.setItem('records', JSON.stringify(items)); 
+        alert('Please refresh page to delete item')       
     }else {
         console.log('Name was not found')
     }
@@ -74,11 +76,21 @@ function removeItem(id) {
 
 document.querySelector('#sort').addEventListener('click', ()=> {
     items.sort( (a, b)=> {
-        return (a.item < b.item) ? -1: 0; 
+        // return (a.item < b.item) ? -1: 0; 
+        if (a.item < b.item) {
+            return -1
+        }
+        if (a.item > b.item) {
+            return 1
+        } 
+            
+        return 0
+        
     });
     // Save new data to the localstorage
     localStorage.setItem('records', JSON.stringify(items));   
-    showData(); 
+    showData();
+    alert('Please refresh page to sort item') 
 });
 
 // localStorage.removeItem('records');
